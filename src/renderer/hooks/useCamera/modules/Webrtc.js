@@ -10,8 +10,8 @@ class Webrtc {
     this.height = false;
 
     this.peer = undefined;
-    this.peerid = "";
     this.conn = undefined;
+    this.peerid = "";
     this.configure = "";
   }
 
@@ -22,29 +22,6 @@ class Webrtc {
   connect() {
     this.conn = this.peer.connect("camera")
     console.log("connecting")
-    this.conn.on('data', async (data) => {
-      console.log(`\nreceived ${data}`)
-      const message = JSON.parse(data)
-      if(message.type === "answer")
-      {
-        if(message.message === "started")
-        {
-          this.configure = false
-        }
-        else if(message.message === "allclosed")
-        {
-          this.configure = true
-        }
-      }
-      else if(message.type === "configure")
-      {
-        this.configure = message.value
-      }
-      else
-      {
-        console.log(`I don't deal with message of type ${message.type}`)
-      }
-    })
     this.conn.on("open", async () => {
       console.log("\nconnected to the camera")
     })
