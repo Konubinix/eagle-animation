@@ -40,6 +40,10 @@ class Webrtc {
           // console.log("connect to camera")
           // this.connect()
         });
+        this.peer.on("error", (err) => {
+          alert(`error: ${err}`)
+        });
+
         this.peer.on('call', (call) => {
           console.log("in call")
           call.answer();
