@@ -24,7 +24,7 @@
     "start:electron:prod": "electron-vite preview",
     "start:web": "vite --host",
     "start:web:prod": "vite preview",
-    "build:web": "vite build",
+    "build:web": "vite build --emptyOutDir --base='./'",
     "build:unpack": "electron-vite build && electron-builder --dir",
     "build:win": "electron-vite build && electron-builder --win",
     "build:mac": "electron-vite build && electron-builder --mac",
